@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="title">
+     Home Page
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">News and Weather App</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div  id="container" >
+    <strong>Welcome to my News and Weather App!</strong>
+    <br>
+    <strong>Please Choose one of the buttons</strong>
+    <br>
+    <br>
+    <ion-button size="medium" (click)="goToNews()" >Click for Irish News headlines</ion-button>
+    <br>
+    <br>
+    <ion-button size="medium"(click)="goToWeatherLocation()" >Click for Weather</ion-button>
+    <br>
+    <!-- <ion-button size="medium" >Click for Weather Using User Input</ion-button> -->
+    <!-- <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
+  </div>
+</ion-content>
