@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'extra-weather',
     loadChildren: () => import('./extra-weather/extra-weather.module').then( m => m.ExtraWeatherPageModule)
   },
+  {
+    path: 'timezone',
+    loadChildren: () => import('./timezone/timezone.module').then( m => m.TimezonePageModule)
+  },
 ];
 
 @NgModule({

@@ -17,4 +17,8 @@ export class HomePage {
   goToWeatherLocation(){
     this.router.navigateByUrl('/weather-location');
   }
+
+  goToTimeZone(){
+    this.router.navigateByUrl('/timezone');
+  }
 }

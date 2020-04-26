@@ -11,21 +11,51 @@ import { Router } from '@angular/router';
 export class WeatherLocationPage implements OnInit {
 Weather:any=[];
 Current:any=[];
+lat;
+  lon;
   constructor(private weatherByLocationService:WeatherByLocationService,public router: Router) { }
 
-    //receive data from the api on startup and assign it to arrays
+    //the page shows the weather for the default location on startup which is galway
   ngOnInit(){
-    this.weatherByLocationService.GetWeather().subscribe(
+    // this.weatherByLocationService.GetWeather().subscribe(
+    //   (data)=>{
+    //     this.Weather = data.location;
+    //     this.Current = data.current;
+    //   }
+    //  );
+    this.getLocation();
+ 
+  }
+
+  goHome(){
+    this.router.navigateByUrl('/home');
+  }
+
+  getLocation(){
+    //using navigator to get device location to use in getweatherdatabycord method
+    if("geolocation" in navigator){
+      navigator.geolocation.watchPosition((success)=>{
+        this.lat = success.coords.latitude;
+        this.lon = success.coords.longitude;
+
+        this.weatherByLocationService.getWeatherDataByCord(this.lat, this.lon).subscribe(data=>{
+          this.Weather = data.location;
+          this.Current = data.current;
+        });
+
+      })
+    }
+  }
+
+  //if the user enters a location it passes the string into the method and shows desired weather
+  getCity(city){
+    this.weatherByLocationService.getWeatherDataByCity(city).subscribe(
       (data)=>{
         this.Weather = data.location;
         this.Current = data.current;
       }
     );
-     
-  }
-
-  goHome(){
-    this.router.navigateByUrl('/home');
+    //this.weatherByLocationService.GetWeather
   }
 
   goExtra(){
